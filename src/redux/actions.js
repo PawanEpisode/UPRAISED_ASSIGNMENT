@@ -7,6 +7,8 @@ import {
     CHANGE_QUESTIONS,
   } from "./actionsTypes";
 
+
+  // Functions to update each state in the store using actionTypes
   export const handleQuestionsChange = (payload) => ({
     type: CHANGE_QUESTIONS,
     payload,

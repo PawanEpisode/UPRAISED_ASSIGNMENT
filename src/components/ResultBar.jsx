@@ -5,6 +5,7 @@ import RectangleBlank from "../assets/RectangleBlank.png";
 
 import "./ResultBar.scss";
 
+//Generic Function for setInterval
 function useInterval(callback, delay) {
   const savedCallback = useRef();
 
@@ -23,11 +24,18 @@ function useInterval(callback, delay) {
 }
 
 const ResultBar = ({ numberOfQuestion, correctAnswerCount }) => {
+  // counter is used to calculate the value upto define resultPercent
   const [counter, setCounter] = useState(0);
+
+  // resultPercent is overall percentage value of correctAnswerCount done by User for a define  numberOfQuestion
   const resultPercent = (correctAnswerCount * 100) / numberOfQuestion;
+
+  // resultDegree is degree of arrow in resultBar with respect to semicircular area i.e 180degree according to resultPercent
   const resultDegree = (resultPercent * 180) / 100 || 1;
 
+  // predefined function for dynamically incrementing the value of resultPercent
   useInterval(() => {
+    // counter increment till resultPercent
     if (counter < resultPercent) {
       setCounter(counter + 1);
     }
@@ -146,9 +154,10 @@ const ResultBar = ({ numberOfQuestion, correctAnswerCount }) => {
                   height="292"
                   viewBox="0 0 160 292"
                   fill="none"
+                  // dynamically updating the css Values by using variable(--rotation, --animationDuration)
                   style={{
                     "--rotation": `${resultDegree - 90}deg`,
-                    "--animationDuration": `${resultDegree * 50}ms`,
+                    "--animationDuration": `${resultDegree * 20}ms`,
                   }}
                 >
                   <path

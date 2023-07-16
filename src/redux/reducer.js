@@ -7,6 +7,8 @@ import {
     CHANGE_TYPE,
   } from "./actionsTypes";
   
+
+  // Initial state in the store 
   const initialState = {
     questions: [],
     question_category: "",
@@ -15,7 +17,7 @@ import {
     amount_of_question: 5,
     score: 0,
   };
-  
+  // reducer function to update the values of each state based on actionTypes
   const reducer = (state = initialState, action) => {
     switch (action.type) {
       case CHANGE_QUESTIONS:

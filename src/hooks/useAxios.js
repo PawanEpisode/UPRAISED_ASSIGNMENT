@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 axios.defaults.baseURL = "https://opentdb.com";
 
+// Generic Function for using axios to fetch the response of API
 const useAxios = ({ url }) => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState("");
@@ -12,8 +13,12 @@ const useAxios = ({ url }) => {
     const fetchData = () => {
       axios
         .get(url)
-        .then((res) => setResponse(res.data))
-        .catch((err) => setError(err))
+        .then((res) => {
+          setResponse(res?.data);
+        })
+        .catch((err) => {
+          setError(err);
+        })
         .finally(() => setLoading(false));
     };
     fetchData();
