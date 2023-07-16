@@ -6,16 +6,25 @@ import YourResult from "../assets/YourResult.png";
 import StartAgain from "../assets/StartAgain.png";
 import ColorfulContainer from "../assets/ColorfulContainer.png";
 
-import './FinalScreen.scss';
+import "./FinalScreen.scss";
 
 const FinalScreen = () => {
+  //using dispatch to Update Values for each actionType
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { amount_of_question,score } = useSelector((state) => state);
 
+  // using navigate to navigate between routes
+  const navigate = useNavigate();
+
+  // getting amount_of_question,score from store
+  const { amount_of_question, score } = useSelector((state) => state);
+
+  // function Handling for starting again the Quiz
   const handleStartAgain = () => {
+    // Updating the score and amount_of_question values in store
     dispatch(handleScoreChange(0));
     dispatch(handleAmountChange(5));
+
+    //navigating to settings page
     navigate("/");
   };
 
@@ -40,9 +49,7 @@ const FinalScreen = () => {
               </div>
               <div className="incorrect">
                 <div className="circle Wrong"></div>
-                <div className="score">
-                  {amount_of_question - score}
-                </div>
+                <div className="score">{amount_of_question - score}</div>
                 <div className="scoreLabel">Incorrect</div>
               </div>
             </div>

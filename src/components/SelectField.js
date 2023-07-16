@@ -8,11 +8,15 @@ import {
   handleTypeChange,
 } from "../redux/actions";
 
+// Generic component for select component based on label and options props
 const SelectField = (props) => {
   const { label, options } = props;
   const dispatch = useDispatch();
+  
+  // value state to store select component categories values
   const [value, setValue] = useState("");
 
+  // Function to update the categories values in the store
   const handleChange = (e) => {
     setValue(e.target.value);
     switch (label) {
@@ -31,7 +35,7 @@ const SelectField = (props) => {
   };
 
   return (
-    <Box mt={3} width="100%">
+    <Box mt={5} width="100%">
       <FormControl size="small" fullWidth>
         <InputLabel>{label}</InputLabel>
         <Select value={value} label={label} onChange={handleChange}>
